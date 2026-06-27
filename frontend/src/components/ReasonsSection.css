@@ -1,0 +1,180 @@
+.reasons-section {
+  width: 100%;
+  height: 100vh;
+  background-color: #030303;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.reasons-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 0 2rem;
+}
+
+.reasons-header.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reasons-header h2 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.reasons-header .highlight-script {
+  color: var(--primary);
+  font-weight: bold;
+  font-family: 'Alex Brush', cursive;
+  font-size: 5rem;
+  text-transform: capitalize;
+  background: linear-gradient(90deg, #8B1E00, #FF7B42);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  padding-bottom: 10px;
+}
+
+.reasons-header p {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: 1px;
+}
+
+/* Horizontal scrolling wrapper */
+.cards-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1.5s ease 0.4s; /* Fade in slightly after header */
+  padding: 2rem 0;
+}
+
+.cards-wrapper.animate-in {
+  opacity: 1;
+}
+
+.cards-wrapper::before,
+.cards-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cards-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #030303, transparent);
+}
+
+.cards-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #030303, transparent);
+}
+
+.cards-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollTrack 50s linear infinite; /* Increased duration to slow down the flow */
+  padding: 0 1rem;
+}
+
+/* Pause animation on hover for readability */
+.cards-track:hover {
+  animation-play-state: paused;
+}
+
+.reason-card {
+  width: 380px;
+  height: 260px;
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.reason-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.reason-card:hover::before {
+  opacity: 1;
+}
+
+.reason-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.reason-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.95;
+  z-index: 1;
+  font-weight: 400;
+}
+
+@keyframes scrollTrack {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate left by exactly half the track width (including one gap) to loop seamlessly */
+    transform: translateX(calc(-50% - 1rem)); 
+  }
+}
+
+@media (max-width: 1024px) {
+  .reasons-header h2 {
+    flex-direction: column;
+    gap: 0;
+  }
+  .reason-card {
+    width: 320px;
+    height: 240px;
+  }
+}

@@ -1,0 +1,283 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Enforce full viewport height for snapping */
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero-content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 8% 4rem 2rem 4rem; /* matches navbar padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none; /* Let clicks pass through if needed, but we have buttons */
+}
+
+.hero-left, .hero-right, .hero-services-icons {
+  pointer-events: auto; /* Re-enable clicks for content */
+}
+
+/* --- Left Column --- */
+.hero-left {
+  max-width: 500px;
+  margin-top: -5%; /* Shifted upwards as requested */
+}
+
+.hero-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle .line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+/* --- Entry Animations --- */
+.hero-left .hero-subtitle,
+.hero-left .h1,
+.hero-left .hero-description,
+.hero-left .btn-primary,
+.hero-services-icons {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-section.loaded .hero-subtitle {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.hero-section.loaded .h1 {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.hero-section.loaded .hero-description {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.6s;
+}
+
+.hero-section.loaded .btn-primary {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+
+.hero-section.loaded .hero-services-icons {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}
+
+.hero-subtitle p {
+  color: var(--primary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.hero-left .h1 {
+  font-size: 5.2rem; /* Decreased very slightly from 5.5rem */
+  margin-bottom: 1.5rem;
+}
+
+.hero-left .hero-description {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* --- Right Column --- */
+.hero-right {
+  max-width: 400px;
+  align-self: flex-start;
+  margin-top: 15%;
+  margin-right: 5%;
+}
+
+.right-subtitle {
+  margin-bottom: 1.5rem;
+}
+
+.right-subtitle p {
+  color: #fff;
+}
+
+.right-description {
+  margin-bottom: 2.5rem;
+}
+
+.watch-story {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.play-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.watch-story:hover .play-btn {
+  background: rgba(255, 123, 66, 0.1);
+  transform: scale(1.05);
+}
+
+.watch-story p {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* --- Bottom Right Icons --- */
+.hero-services-icons {
+  position: absolute;
+  bottom: 8%;
+  right: 4%; /* Shifted to the right */
+  display: flex;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.service-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 1rem;
+  cursor: pointer;
+}
+
+/* Vertical Partitions */
+.service-icon:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1.75rem; /* Half of the gap */
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient Overlay Background (Hidden by Default) */
+.service-icon::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle at center, rgba(255, 123, 66, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+/* Hover Scaling Logic */
+.hero-services-icons:hover .service-icon {
+  /* Shrink all icons when the container is hovered */
+  transform: scale(0.85);
+  opacity: 0.6;
+}
+
+.hero-services-icons .service-icon:hover {
+  /* Enlarge the specifically hovered icon */
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+.hero-services-icons .service-icon:hover::before {
+  /* Show gradient overlay */
+  opacity: 1;
+}
+
+.service-icon img {
+  height: 65px; /* Increased from 55px */
+  width: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 5px rgba(255,123,66,0.3));
+  transition: all 0.4s ease;
+}
+
+.service-icon p {
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 400;
+  transition: all 0.4s ease;
+}
+
+.service-icon .dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+}
+
+/* Responsive Scaling */
+@media (max-width: 1400px) {
+  .hero-left .h1 { font-size: 4.5rem; }
+  .hero-content-overlay { padding-top: 10%; }
+}
+
+@media (max-width: 1024px) {
+  .hero-left .h1 { font-size: 3.5rem; }
+  .hero-left .hero-description { font-size: 1rem; }
+  .hero-right { margin-top: 10%; margin-right: 0; }
+  .hero-services-icons { bottom: 5%; right: 5%; gap: 1.5rem; }
+  .service-icon img { height: 35px; }
+}
+
+@media (max-width: 768px) {
+  .hero-content-overlay {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15% 2rem 2rem 2rem;
+  }
+  .hero-right {
+    align-self: flex-start;
+    margin-top: 2rem;
+    margin-right: 0;
+  }
+  .hero-left .h1 { font-size: 2.5rem; }
+  .hero-services-icons {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 2rem;
+  }
+}

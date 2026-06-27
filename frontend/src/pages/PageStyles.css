@@ -1,0 +1,178 @@
+/* Shared Styles for Standard Pages */
+.page-container {
+  min-height: 100vh;
+  padding: 140px 10% 80px;
+  background-color: var(--bg-dark);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.page-header h1 span {
+  color: var(--primary);
+  font-weight: 600;
+  font-family: 'Alex Brush', cursive;
+  font-size: 5rem;
+  text-transform: capitalize;
+  background: linear-gradient(90deg, #8B1E00, #FF7B42);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* About Page */
+.about-content .lead-text {
+  font-size: 1.4rem;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 4rem;
+  line-height: 1.6;
+}
+
+.text-block {
+  margin-bottom: 3.5rem;
+}
+
+.text-block h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.text-block p {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* Contact Page */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+}
+
+.contact-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  color: #a0a0a0;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-info li {
+  margin-bottom: 1rem;
+  color: #d0d0d0;
+}
+
+.contact-info li strong {
+  color: var(--primary);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  background-color: #111;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.contact-form .btn-primary {
+  width: 100%;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Empty States (Blogs/Products) */
+.empty-state {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.emoji-container {
+  font-size: 8rem;
+  margin-bottom: 2rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.sad-emoji {
+  /* Using standard emoji, tinted orange with drop shadow */
+  text-shadow: 0 0 40px rgba(255, 123, 66, 0.8), 0 0 100px rgba(255, 123, 66, 0.6);
+  filter: sepia(1) saturate(5) hue-rotate(-30deg); /* CSS trick to make the emoji orange */
+}
+
+.empty-state h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state p {
+  color: #a0a0a0;
+  font-size: 1.2rem;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
