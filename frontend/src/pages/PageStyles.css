@@ -176,3 +176,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+.form-status {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.form-status.success {
+  background-color: rgba(46, 204, 113, 0.15);
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+}
+
+.form-status.error {
+  background-color: rgba(231, 76, 60, 0.15);
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+}
