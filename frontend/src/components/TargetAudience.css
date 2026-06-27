@@ -123,9 +123,34 @@
 }
 
 @media (max-width: 1024px) {
+  .target-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 120px 0 80px;
+  }
+  
   .target-container {
     flex-direction: column;
     gap: 4rem;
+  }
+  
+  .target-right {
+    width: 100%;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .target-column {
+    border-left: none;
+    border-top: 1px solid rgba(255, 123, 66, 0.3);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .target-title {
+    font-size: 2.8rem;
   }
 }
 

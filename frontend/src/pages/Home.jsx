@@ -5,37 +5,45 @@ import ReasonsSection from '../components/ReasonsSection';
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const isScrolling = useRef(false);
-  const totalSections = 3; // Updated to 3 for the new section
+  const totalSections = 3;
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return; // Native scrolling on mobile/tablet
+
     const handleWheel = (e) => {
-      // Prevent default scrolling behavior if needed (handled by CSS overflow: hidden mostly)
       if (isScrolling.current) return;
 
       isScrolling.current = true;
       if (e.deltaY > 0) {
-        // Scroll down
         setActiveIndex((prev) => Math.min(prev + 1, totalSections - 1));
       } else if (e.deltaY < 0) {
-        // Scroll up
         setActiveIndex((prev) => Math.max(prev - 1, 0));
       }
 
-      // Unlock scrolling after the transition completes
       setTimeout(() => {
         isScrolling.current = false;
-      }, 1000); // 1 second matches the CSS transition duration
+      }, 1000);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, []);
+  }, [isMobile]);
 
   return (
     <div 
       className="sections-container" 
-      style={{ transform: `translateY(-${activeIndex * 100}vh)` }}
+      style={isMobile ? {} : { transform: `translateY(-${activeIndex * 100}vh)` }}
     >
       <Hero />
       <TargetAudience />

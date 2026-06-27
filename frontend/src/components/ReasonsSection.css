@@ -169,6 +169,11 @@
 }
 
 @media (max-width: 1024px) {
+  .reasons-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 120px 0 80px;
+  }
   .reasons-header h2 {
     flex-direction: column;
     gap: 0;
@@ -176,5 +181,25 @@
   .reason-card {
     width: 320px;
     height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reasons-header h2 {
+    font-size: 2.5rem;
+  }
+  .reasons-header .highlight-script {
+    font-size: 3.8rem;
+  }
+  .reason-card {
+    width: 290px;
+    height: 220px;
+    padding: 2rem 1.5rem;
+  }
+  .reason-card h3 {
+    font-size: 1.3rem;
+  }
+  .reason-card p {
+    font-size: 0.85rem;
   }
 }

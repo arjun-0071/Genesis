@@ -254,6 +254,11 @@
 }
 
 @media (max-width: 1024px) {
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
   .hero-left .h1 { font-size: 3.5rem; }
   .hero-left .hero-description { font-size: 1rem; }
   .hero-right { margin-top: 10%; margin-right: 0; }
