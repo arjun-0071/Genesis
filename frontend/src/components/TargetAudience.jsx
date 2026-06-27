@@ -2,20 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import './TargetAudience.css';
 
 // Import images directly to guarantee Vite resolves them correctly
-import imgNail1 from '../../public/assets/who_needs_genesis/DELAMINATION OF THE NAIL PLATE.webp';
-import imgNail2 from '../../public/assets/who_needs_genesis/DISRUPTION OF NAIL GROWTH OR STRUCTURE.png';
-import imgNail3 from '../../public/assets/who_needs_genesis/INCREASED FRAGILITY OF NAILS AND OTHER ABNORMALITIES OF THE NAIL PLATE.jpg';
+import imgNail1 from '../../public/assets/Who_needs_genesis/DELAMINATION OF THE NAIL PLATE.webp';
+import imgNail2 from '../../public/assets/Who_needs_genesis/DISRUPTION OF NAIL GROWTH OR STRUCTURE.png';
+import imgNail3 from '../../public/assets/Who_needs_genesis/INCREASED FRAGILITY OF NAILS AND OTHER ABNORMALITIES OF THE NAIL PLATE.jpg';
 
-import imgHair1 from '../../public/assets/who_needs_genesis/hair loss.jpg';
-import imgHair2 from '../../public/assets/who_needs_genesis/grey hair.jpg';
-import imgHair3 from '../../public/assets/who_needs_genesis/Increased hair thinning.webp';
-import imgHair4 from '../../public/assets/who_needs_genesis/split hair.webp';
-import imgHair5 from '../../public/assets/who_needs_genesis/extremely oily or dry hair.jpg';
+import imgHair1 from '../../public/assets/Who_needs_genesis/hair loss.jpg';
+import imgHair2 from '../../public/assets/Who_needs_genesis/grey hair.jpg';
+import imgHair3 from '../../public/assets/Who_needs_genesis/Increased hair thinning.webp';
+import imgHair4 from '../../public/assets/Who_needs_genesis/split hair.webp';
+import imgHair5 from '../../public/assets/Who_needs_genesis/extremely oily or dry hair.jpg';
 
-import imgSkin1 from '../../public/assets/who_needs_genesis/problem skin.png';
-import imgSkin2 from '../../public/assets/who_needs_genesis/oily skin.webp';
-import imgSkin3 from '../../public/assets/who_needs_genesis/dry skin.jpg';
-import imgSkin4 from '../../public/assets/who_needs_genesis/skin lightening.jpg';
+import imgSkin1 from '../../public/assets/Who_needs_genesis/problem skin.png';
+import imgSkin2 from '../../public/assets/Who_needs_genesis/oily skin.webp';
+import imgSkin3 from '../../public/assets/Who_needs_genesis/dry skin.jpg';
+import imgSkin4 from '../../public/assets/Who_needs_genesis/skin lightening.jpg';
 
 const needsData = {
   nails: [
