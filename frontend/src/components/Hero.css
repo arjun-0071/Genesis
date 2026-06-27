@@ -8,6 +8,21 @@
   scroll-snap-stop: always;
 }
 
+/* Semi-transparent dark overlay for background readability */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero-bg-image {
   width: 100%;
   height: 100%;
@@ -26,6 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2; /* Sits above the dark overlay */
   pointer-events: none; /* Let clicks pass through if needed, but we have buttons */
 }
 
@@ -255,9 +271,8 @@
 
 @media (max-width: 1024px) {
   .hero-section {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
+    height: 100vh; /* Keep strictly 100vh for scroll snaps */
+    overflow: hidden;
   }
   .hero-left .h1 { font-size: 3.5rem; }
   .hero-left .hero-description { font-size: 1rem; }
@@ -271,7 +286,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 15% 2rem 2rem 2rem;
+    padding: 25% 2rem 2rem 2rem; /* Push content lower so it fits under the logo/menu */
+  }
+  .hero-bg-image {
+    object-position: 70% center; /* Shift the woman's face to the right on mobile */
   }
   .hero-right {
     align-self: flex-start;
