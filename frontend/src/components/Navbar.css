@@ -141,3 +141,47 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
+
+@media (max-width: 768px) {
+  /* Turn horizontal menu into a premium vertical sliding drawer on phones */
+  .nav-menu-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    background: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0;
+    border: none;
+    border-left: 1px solid rgba(255, 123, 66, 0.15);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    padding: 8rem 2rem 2rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .nav-menu-container.open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar-links a {
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+  }
+}
