@@ -8,7 +8,7 @@
 }
 
 :root {
-  --primary: #FF7B42; /* The orange brand color */
+  --primary: #E65C00; /* Darker, richer orange brand color */
   --text-main: #FFFFFF;
   --text-muted: #A0A0A0;
   --bg-dark: #000000;
@@ -70,9 +70,9 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: #e56d35;
+  background-color: #CC5200; /* Even darker orange for hover */
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(255, 123, 66, 0.4);
+  box-shadow: 0 8px 20px rgba(230, 92, 0, 0.4);
 }
 
 .btn-outline {
@@ -113,4 +113,28 @@ body {
 
 .btn-primary:hover .icon-circle {
   transform: translateX(4px);
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: #333 var(--bg-dark);
 }

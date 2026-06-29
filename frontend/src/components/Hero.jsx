@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
@@ -48,21 +49,21 @@ const Hero = () => {
 
         {/* Bottom Right Icons */}
         <div className="hero-services-icons">
-          <div className="service-icon">
+          <Link to="/blogs/skin-care" className="service-icon" style={{textDecoration: 'none', color: 'inherit'}}>
             <img src="/assets/skin icon.png" alt="Skin Care" />
             <p>Skin Care</p>
             <span className="dot"></span>
-          </div>
-          <div className="service-icon">
+          </Link>
+          <Link to="/blogs/hair-care" className="service-icon" style={{textDecoration: 'none', color: 'inherit'}}>
             <img src="/assets/hair icon.png" alt="Hair Care" />
             <p>Hair Care</p>
             <span className="dot"></span>
-          </div>
-          <div className="service-icon">
+          </Link>
+          <Link to="/blogs/nails-care" className="service-icon" style={{textDecoration: 'none', color: 'inherit'}}>
             <img src="/assets/nails icon.png" alt="Nail Care" />
             <p>Nail Care</p>
             <span className="dot"></span>
-          </div>
+          </Link>
         </div>
 
       </div>

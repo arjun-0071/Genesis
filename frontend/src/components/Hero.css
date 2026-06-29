@@ -63,37 +63,37 @@
 .hero-services-icons {
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-section.loaded .hero-subtitle {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
 }
 
 .hero-section.loaded .h1 {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 .hero-section.loaded .hero-description {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.6s;
+  transition-delay: 0.3s;
 }
 
 .hero-section.loaded .btn-primary {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 0.8s;
+  transition-delay: 0.4s;
 }
 
 .hero-section.loaded .hero-services-icons {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 1s;
+  transition-delay: 0.5s;
 }
 
 .hero-subtitle p {

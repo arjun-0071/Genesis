@@ -196,3 +196,29 @@
   border: 1px solid #e74c3c;
   color: #e74c3c;
 }
+
+/* Pagination controls */
+.pagination-arrow {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-arrow:hover {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.pagination-arrow:disabled {
+  color: #444;
+  cursor: not-allowed;
+}
+
+.pagination-arrow:disabled:hover {
+  color: #444;
+  transform: none;
+}

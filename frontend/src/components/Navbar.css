@@ -6,8 +6,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.4rem 4rem; /* Increased top padding slightly */
+  padding: 0.9rem 4rem; /* Decreased top/bottom padding to reduce height */
   z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-transparent {
+  background-color: transparent;
+  border-bottom: none;
+}
+
+.navbar-solid {
+  background-color: var(--bg-dark); /* Match the exact website background */
+  border-bottom: none;
 }
 
 .navbar-logo {
@@ -74,11 +85,11 @@
   color: var(--primary);
 }
 
-.navbar-links li.active a {
+.navbar-links > li.active > a {
   color: var(--primary);
 }
 
-.navbar-links li.active a::after {
+.navbar-links > li.active > a::after {
   content: '';
   position: absolute;
   bottom: -6px;
@@ -86,6 +97,64 @@
   width: 100%;
   height: 2px;
   background-color: var(--primary);
+}
+
+/* Dropdown Menu Styles */
+.nav-item-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-15px); /* Start slightly higher for drop down animation */
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border, not orange */
+  border-radius: 16px; /* Rounded corners */
+  padding: 0.5rem 0;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy drop animation */
+  z-index: 105;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-top: 15px; /* space between text and dropdown */
+}
+
+/* Invisible bridge so hover isn't lost */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu a {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  color: #fff;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  text-align: center;
+}
+
+.dropdown-menu a:hover {
+  background: transparent;
+  color: var(--primary);
 }
 
 .navbar-actions {
@@ -183,5 +252,37 @@
   .navbar-links a {
     font-size: 1.3rem;
     letter-spacing: 1.5px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 1rem 0 0 0;
+    min-width: auto;
+    opacity: 1;
+    visibility: visible;
+    display: none; /* Hide until hovered/clicked for mobile simplicity */
+    margin-top: 0;
+  }
+
+  .nav-item-dropdown {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-item-dropdown:hover .dropdown-menu,
+  .nav-item-dropdown:focus-within .dropdown-menu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .dropdown-menu a {
+    font-size: 1.1rem;
+    padding: 0.8rem 1rem;
   }
 }

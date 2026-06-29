@@ -1,0 +1,198 @@
+.helps-section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 80px; /* Reduced from 120px to bring closer to navbar */
+  background-color: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.helps-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.helps-title {
+  margin-bottom: 1rem;
+  z-index: 10;
+}
+
+.helps-title h2 {
+  font-size: 2.5rem; /* Reduced from 3rem */
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.helps-title .highlight-script {
+  color: var(--primary);
+  font-weight: bold;
+  font-family: 'Alex Brush', cursive;
+  font-size: 4.2rem; /* Reduced from 5rem */
+  text-transform: capitalize;
+  background: linear-gradient(90deg, #8B1E00, var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  padding: 0 15px 10px 15px;
+}
+
+/* 3D Carousel Scene */
+.carousel-scene {
+  position: relative;
+  width: 100%;
+  height: 440px; /* Increased to accommodate taller cards */
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.carousel-spinner {
+  width: 460px; /* Increased from 400px */
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.carousel-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 460px; /* Increased from 400px */
+  height: 400px;
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2.8rem 2rem; /* Slightly increased padding */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* Slightly reduced gap */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transform: rotateY(var(--rotY)) translateZ(640px) scale(1);
+}
+
+.carousel-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 40px rgba(230, 92, 0, 0.15);
+  transform: rotateY(var(--rotY)) translateZ(640px) scale(1.03);
+}
+
+.helps-icon-wrapper {
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05); /* Soft white glass initially */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* White icon initially */
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.carousel-card:hover .helps-icon-wrapper {
+  color: var(--primary); /* Icon turns orange */
+  background: rgba(230, 92, 0, 0.15); /* Background gains orange glow */
+  transform: scale(1.25) translateY(-5px); /* Dramatic pop effect */
+}
+
+.carousel-card h3 {
+  font-size: 1.25rem; /* Reduced from 1.4rem */
+  font-weight: 600;
+  color: #fff;
+}
+
+.carousel-card p {
+  font-size: 0.95rem; /* Reduced from 1rem */
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Controls */
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4rem;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.carousel-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.carousel-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.1);
+}
+
+/* Mobile Fallback */
+@media (max-width: 1024px) {
+  .carousel-scene {
+    perspective: none;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    padding: 1rem 2rem;
+    scroll-snap-type: x mandatory;
+    margin-top: 1rem;
+  }
+  .carousel-spinner {
+    transform-style: flat;
+    transition: none;
+    display: flex;
+    width: auto;
+    height: auto;
+    gap: 1.5rem;
+    transform: none !important;
+  }
+  .carousel-card {
+    position: relative;
+    transform: none !important; /* Override inline styles */
+    min-width: 280px;
+    height: auto;
+    min-height: 350px;
+    scroll-snap-align: center;
+  }
+  .carousel-controls {
+    display: none;
+  }
+}
