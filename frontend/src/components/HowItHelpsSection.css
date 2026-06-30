@@ -201,3 +201,14 @@
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .helps-title h2 {
+    font-size: 1.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .helps-title .highlight-script {
+    font-size: 3rem;
+  }
+}

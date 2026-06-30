@@ -216,3 +216,13 @@
     height: 4px;
   }
 }
+
+/* Phones */
+@media (max-width: 768px) {
+  .reasons-header h2 {
+    font-size: 1.8rem;
+  }
+  .reasons-header .highlight-script {
+    font-size: 3.2rem;
+  }
+}
