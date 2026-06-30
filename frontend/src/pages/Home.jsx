@@ -6,11 +6,20 @@ import HowItHelpsSection from '../components/HowItHelpsSection';
 
 const Home = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const isScrolling = useRef(false);
   const totalSections = 4;
   const touchStartY = useRef(0);
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 1024);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return; // Disable custom scroll logic on mobile
+
     const handleWheel = (e) => {
       if (isScrolling.current) return;
 
@@ -36,7 +45,6 @@ const Home = () => {
       const touchEndY = e.changedTouches[0].clientY;
       const diffY = touchStartY.current - touchEndY;
 
-      // Swipe up (diffY > 50) means scroll down, Swipe down (diffY < -50) means scroll up
       if (Math.abs(diffY) > 50) {
         isScrolling.current = true;
         if (diffY > 0) {
@@ -60,12 +68,12 @@ const Home = () => {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div 
       className="sections-container" 
-      style={{ transform: `translateY(-${activeIndex * 100}vh)` }}
+      style={!isMobile ? { transform: `translateY(-${activeIndex * 100}vh)` } : {}}
     >
       <Hero />
       <TargetAudience />

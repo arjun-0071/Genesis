@@ -258,8 +258,9 @@
 
 @media (max-width: 1024px) {
   .hero-section {
-    height: 100vh; /* Keep strictly 100vh for scroll snaps */
-    overflow: hidden;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
   }
   /* Semi-transparent dark overlay for background readability on smaller screens */
   .hero-section::before {
@@ -278,7 +279,7 @@
   .hero-left .h1 { font-size: 3.5rem; }
   .hero-left .hero-description { font-size: 1rem; }
   .hero-right { margin-top: 10%; margin-right: 0; }
-  .hero-services-icons { bottom: 5%; right: 5%; gap: 1.5rem; }
+  .hero-services-icons { bottom: 5%; right: 5%; gap: 1.5rem; flex-wrap: wrap; }
   .service-icon img { height: 35px; }
 }
 

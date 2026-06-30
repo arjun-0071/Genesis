@@ -171,6 +171,11 @@
 
 /* Mobile Fallback */
 @media (max-width: 1024px) {
+  .reasons-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 5% 80px;
+  }
   .reasons-container {
     flex-direction: column;
     text-align: center;

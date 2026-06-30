@@ -12,3 +12,15 @@
   transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* Elegant and smooth ease-in-out */
   will-change: transform;
 }
+
+@media (max-width: 1024px) {
+  .App {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .sections-container {
+    height: auto;
+    transform: none !important;
+  }
+}
